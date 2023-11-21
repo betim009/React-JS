@@ -1,0 +1,17 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav a {
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    margin: 1rem;
+    color: #1b1b1a;
+}
+
+.active {
+    font-weight: bold;
+}

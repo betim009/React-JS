@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Context from "../../context/Context";
+import './cadastro.css';
 
 function Cadastro() {
     const navigate = useNavigate();
