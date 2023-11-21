@@ -1,6 +1,6 @@
 import Context from './Context';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const dataUsers = [
@@ -9,6 +9,17 @@ const dataUsers = [
 
 function Provider({ children }) {
     const [users, setUsers] = useState(dataUsers);
+
+    useEffect(() => {
+        const fetchLocalStorage = async () => {
+            const req = await localStorage.getItem("users");
+            const res = JSON.parse(req);
+
+            setUsers(res)
+        };
+
+        fetchLocalStorage();
+    }, [])
 
     const contextValue = {
         users,
