@@ -15,7 +15,7 @@ function Provider({ children }) {
             const req = await localStorage.getItem("users");
             const res = JSON.parse(req);
 
-            setUsers(res)
+            setUsers([...res, users])
         };
 
         fetchLocalStorage();
