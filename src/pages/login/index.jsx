@@ -1,18 +1,44 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react"
+import Context from "../../context/Context";
+
 
 function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+    const { users } = useContext(Context);
+
+    const [formLogin, setFormLogin] = useState({
+        email: '',
+        passowrd: ''
+    });
 
 
-    const handleSubmit = () => {
-        alert(`email: ${email} \npassword: ${password}`)
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        // Verificar se existe esse email no Context
+        const { email, password } = formLogin;
+        const userExists = users.some((user) => user.email === email && user.password === password);
+
+        if (userExists) {
+            // Navigate to /users
+            navigate("/users");
+        } else {
+            alert("Usuário não cadastrado");
+        }
     };
 
-
+    const handleChange = ({ target }) => {
+        const { name, value } = target;
+        setFormLogin({
+            ...formLogin,
+            [name]: value,
+        });
+    };
 
     return (
-
         <>
             <form onSubmit={handleSubmit}>
                 <label>
@@ -22,23 +48,24 @@ function Login() {
                         required
                         type="text"
                         name="email"
-                        onChange={({ target }) => setEmail(target.value)} />
+                        onChange={handleChange}
+                    />
                 </label>
 
                 <label>
-                    Password
-
+                    Password:
                     <input
+                        required
                         type="text"
-                        name="email"
-                        onChange={({ target }) => setPassword(target.value)} />
+                        name="password"
+                        onChange={handleChange}
+                    />
                 </label>
 
                 <button>Login</button>
-
             </form>
         </>
     )
 }
 
-export default Login;
+export default Login

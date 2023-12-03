@@ -1,7 +1,8 @@
+import './cadastro.css';
+
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Context from "../../context/Context";
-import './cadastro.css';
 
 function Cadastro() {
     const navigate = useNavigate();
@@ -27,7 +28,6 @@ function Cadastro() {
         setUsers(newUser);
 
         const data = JSON.stringify(newUser); // -> Converte para Json
-
         localStorage.setItem("users", data); // -> Guarda no Local Storage
 
         // Limpe o formulário após a submissão
@@ -75,7 +75,7 @@ function Cadastro() {
                     />
                 </label>
 
-                <button>Login</button>
+                <button>Cadastrar</button>
             </form>
 
             <p>{users.legth > 0 && users[1].email}</p>
