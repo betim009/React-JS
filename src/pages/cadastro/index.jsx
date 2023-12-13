@@ -28,7 +28,7 @@ function Cadastro() {
         setUsers(newUser);
 
         const data = JSON.stringify(newUser); // -> Converte para Json
-        localStorage.setItem("users", data); // -> Guarda no Local Storage
+        localStorage.setItem("accounts", data); // -> Guarda no Local Storage
 
         // Limpe o formulário após a submissão
         setCadastro({ email: "", password: "" });
@@ -77,8 +77,6 @@ function Cadastro() {
 
                 <button>Cadastrar</button>
             </form>
-
-            <p>{users.legth > 0 && users[1].email}</p>
         </>
     )
 }

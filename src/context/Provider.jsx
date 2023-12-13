@@ -8,14 +8,20 @@ const dataUsers = [
 ];
 
 function Provider({ children }) {
-    const [users, setUsers] = useState(dataUsers);
+    const [users, setUsers] = useState(null);
 
     useEffect(() => {
         const fetchLocalStorage = async () => {
-            const req = await localStorage.getItem("users");
-            const res = JSON.parse(req);
 
-            setUsers([...res, users])
+            // Verifica se a chave 'accounts' já existe no localStorage
+            if (!localStorage.getItem('accounts')) {
+                // Se não existir, inicializa 'accounts' como um array vazio
+                localStorage.setItem('accounts', JSON.stringify(dataUsers));
+            }
+
+            const localSt = JSON.parse(localStorage.getItem("accounts"));
+
+            setUsers(localSt);
         };
 
         fetchLocalStorage();
