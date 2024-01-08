@@ -18,7 +18,7 @@ export const fetchBleach = async () => {
     }
 
 
-    return res.Search[1]
+    return res.Search[6]
 };
 
 export const fetchOnePiece = async () => {

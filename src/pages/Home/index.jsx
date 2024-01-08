@@ -5,6 +5,7 @@ import Card from "../../components/Card";
 function Home() {
     const { animes, acao, ghibli } = useContext(Context);
 
+
     if (!animes || !acao) {
         return <span>Carregando...</span>
     }
@@ -31,27 +32,6 @@ function Home() {
                     ))}
 
                 </div>
-
-
-
-                {/* {animes.map((e, i) => (
-                    <div className="col-12 col-md-4" key={i}>
-                        <div className="">
-                            <h2 className="h5">{e.Title}</h2>
-                        </div>
-                        <img className="img-fluid" src={e.Poster} alt={e.Title} />
-                    </div>
-                ))}
-
-                <h2>Filmes de Ação</h2>
-                {acao.map((e, i) => (
-                    <div className="col-12 col-md-4" key={i}>
-                        <div className="">
-                            <h2 className="h5">{e.Title}</h2>
-                        </div>
-                        <img className="img-fluid" src={e.Poster} alt={e.Title} />
-                    </div>
-                ))} */}
             </div>
         </>
     )

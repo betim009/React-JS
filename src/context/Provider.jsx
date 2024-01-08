@@ -1,15 +1,15 @@
 import Context from './Context';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import { fetchAll } from '../services/fetchsDataAnimes';
-import { fetchAllAcao } from '../services/fetchDataAcao';
-import { fetchGhibli } from '../services/fetchGhibli';
+import { fetchAll, fetchAllAcao, fetchGhibli } from '../services/home';
+
 
 
 function Provider({ children }) {
     const [animes, setAnimes] = useState([] | null);
     const [acao, setAcao] = useState([] | null);
     const [ghibli, setGhibli] = useState([] | null);
+
 
     useEffect(() => {
         const fetchApi = async () => {
@@ -33,7 +33,7 @@ function Provider({ children }) {
         acao,
         setAcao,
         ghibli,
-        setGhibli
+        setGhibli,
     };
 
 
