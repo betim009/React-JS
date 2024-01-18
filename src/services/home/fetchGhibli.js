@@ -35,11 +35,11 @@ export const fetchKikis = async () => {
 export const fetchGhibli = async () => {
     const data = [];
 
-    const castle = await fetchCastle();
-    const momonoke = await fetchMononoke();
     const kikis = await fetchKikis();
+    const momonoke = await fetchMononoke();
+    const castle = await fetchCastle();
 
-    data.push(castle, momonoke, kikis);
+    data.push(kikis, momonoke, castle);
 
     return data;
 };

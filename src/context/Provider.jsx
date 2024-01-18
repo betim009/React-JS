@@ -9,6 +9,7 @@ function Provider({ children }) {
     const [animes, setAnimes] = useState([] | null);
     const [acao, setAcao] = useState([] | null);
     const [ghibli, setGhibli] = useState([] | null);
+    const [search, setSearch] = useState('');
 
 
     useEffect(() => {
@@ -28,12 +29,10 @@ function Provider({ children }) {
     }, [])
 
     const contextValue = {
-        animes,
-        setAnimes,
-        acao,
-        setAcao,
-        ghibli,
-        setGhibli,
+        animes, setAnimes,
+        acao, setAcao,
+        ghibli, setGhibli,
+        search, setSearch,
     };
 
 
