@@ -1,16 +1,16 @@
 export const fetchShooter = async () => {
-    const req = await fetch('https://www.omdbapi.com/?apikey=58eeaad1&s=shooter');
+    const req = await fetch('https://www.omdbapi.com/?apikey=58eeaad1&t=shooter');
     const res = await req.json()
 
     if (!res) {
         throw new Error('Failed to fetch', Error)
     }
 
-    return res.Search[0]
+    return res
 };
 
 export const fetchAvengers = async () => {
-    const req = await fetch('https://www.omdbapi.com/?apikey=58eeaad1&s=avengers');
+    const req = await fetch('https://www.omdbapi.com/?apikey=58eeaad1&t=Emancipation');
     const res = await req.json()
 
     if (!res) {
@@ -18,28 +18,40 @@ export const fetchAvengers = async () => {
     }
 
 
-    return res.Search[1]
+    return res
 };
 
 export const fetchFast = async () => {
-    const req = await fetch('https://www.omdbapi.com/?apikey=58eeaad1&s=fast');
+    const req = await fetch('https://www.omdbapi.com/?apikey=58eeaad1&t=fast');
     const res = await req.json()
 
     if (!res) {
         throw new Error('Failed to fetch', Error)
     }
 
-    return res.Search[0]
+    return res
+};
+
+export const fetchSpider = async () => {
+    const req = await fetch('https://www.omdbapi.com/?apikey=58eeaad1&t=spider+man');
+    const res = await req.json()
+
+    if (!res) {
+        throw new Error('Failed to fetch', Error)
+    }
+
+    return res
 };
 
 export const fetchAllAcao = async () => {
-    const data  = [];
+    const data = [];
 
     const shooter = await fetchShooter();
+    const spider = await fetchSpider();
     const avengers = await fetchAvengers();
     const fast = await fetchFast();
 
-    data.push(shooter, avengers, fast);
+    data.push(spider, shooter, avengers, fast);
 
     return data;
 };
